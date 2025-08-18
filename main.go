@@ -128,7 +128,7 @@ func demonstrateLockContention() {
 	var mu sync.Mutex
 	var wg sync.WaitGroup
 
-	for i := 0; i < 100; i++ {
+	for i := 0; i < 50; i++ {
 		wg.Add(1)
 		goroutineID := i
 		go func() {
@@ -139,7 +139,7 @@ func demonstrateLockContention() {
 			mu.Lock()
 
 			fmt.Printf("Goroutine %d: got lock! Working...\n", goroutineID)
-			time.Sleep(100 * time.Millisecond) // simulate work
+			time.Sleep(25 * time.Millisecond) // simulate work
 
 			mu.Unlock()
 			fmt.Printf("Goroutine %d: Released lock\n", goroutineID)

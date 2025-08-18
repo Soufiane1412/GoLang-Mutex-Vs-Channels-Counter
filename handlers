@@ -1,0 +1,17 @@
+package main
+
+import (
+	"fmt"
+	"net/http"
+)
+
+func main() {
+	http.HandleFunc("/", handleRoot)
+	fmt.Println("Server on :8080")
+	http.ListenAndServe(":8080", nil)
+
+}
+
+func handleRoot(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("API running"))
+}
